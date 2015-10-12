@@ -1,0 +1,16 @@
+#request{
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+  line-height: 100px;
+  text-align: center;
+}
+
+#respond{
+  width: 200px;
+  height: 100px;
+  margin-top: 5%;
+  border: 1px solid black;
+  line-height: 100px;
+  text-align: center;
+}
