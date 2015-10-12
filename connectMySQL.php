@@ -1,15 +1,16 @@
 <?php
 
 
-  DEFINE ('DB_USER', 'root');
-	DEFINE ('DB_PASSWORD', '');
+  DEFINE ('DB_USER', 'masteruser');
+	DEFINE ('DB_PASSWORD', 'password');
 	DEFINE ('DB_HOST', 'localhost');
-	DEFINE ('DB_NAME', 'Locations');
+	DEFINE ('DB_NAME', 'RideShareApp');
 
 
 	$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 	OR die('Could not connect to MySQL: ' .
 	mysqli_connect_error());
+
 
 
  ?>
