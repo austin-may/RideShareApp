@@ -4,20 +4,21 @@
   $query = "SELECT Username, Password FROM Users";
 
   $response = @mysqli_query($dbc, $query);
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $valid = false;
 
   if($response){
 	// mysqli_fetch_array will return a row of data from the query
 	// until no further data is available
 	while($row = mysqli_fetch_array($response)){
-
-	echo '<h3 id="theUser">';
-	echo $row['Username'];
-  echo '</h3><br/>';
-  echo '<h5 id="thePassword" style="display: none";> <strong>Answer:</strong> ';
-  $realAnswer = $row['Password'];
-  echo $realAnswer;
-  echo '</h5><br/>';
+  if($username == $row['Username'] && $password == $row['Password']){
+    $valid = true;
+    break;
+  }
 }
+  if($valid == true){ echo "WELCOME!";}
+  else{ echo "Incorrect";}
 }
 
 
