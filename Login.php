@@ -1,5 +1,5 @@
 <?php
-  require_once('mysqlconnect_php.php');
+  require_once('connectMySQL.php');
 
   $query = "SELECT Username, Password FROM Users";
 
