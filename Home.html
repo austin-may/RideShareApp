@@ -6,13 +6,14 @@
 	<title>Ride Share Home</title>
 	<meta name="description" content="Share a ride with fellow students.  Get low prices on trips back home to see your family.">
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<!--Social Media-->
 	<link href="bootstrap-social.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="font-awesome.css">
 
 	<style>
@@ -37,24 +38,16 @@
 					<a href="" class="navbar-brand">RideShare</a> <!--Change to logo-->
 				</div>
 				<div class="collapse navbar-collapse" id="example">
-					<ul class="nav navbar-nav">
-						<li><a href="">Blah 1</a></li>
-						<li class="active">Blah 1<a href=""></a></li>
-					</ul>
-					<form action="" class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="username">
-							<input type="password" class="form-control" placeholder="password">
-						</div>
-						<button type="submit" class="btn btn-primary">Log In</button>
-					</form>
+						
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-1">Log In</button>
+					<button type="button" class="btn btn-primary" >Sign Up</button>
 				</div>
 			</div>
 		</div>
 
 		<div class="jumbotron container-fluid">
 			<div class="container">
-				<center><button type="submit" class="btn btn-primary">Log In</button></center>
+								
 			</div>
 		</div>
 	</header>
@@ -68,6 +61,26 @@
 				
 			</p>
 		</div> <!-- end container -->
+
+<!-- Modal -->
+<div id="modal-1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>
