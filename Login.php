@@ -19,7 +19,7 @@
     break;
   }
 }
-  if($valid == true){echo "WELCOME ". $firstname ."!";}
+  if($valid == true){echo "<div id = 'welcome'>Welcome ". $firstname ."!".'</div>';}
   else{ echo "Incorrect";}
 }
 
@@ -31,16 +31,155 @@
  <head>
  <script src="js/jquery-1.11.3.min.js"></script>
  <script src="js/app.js"></script>
+ <meta charset="utf-8">
+ <title>Ride Share Home</title>
+ <meta name="description" content="Share a ride with fellow students.  Get low prices on trips back home to see your family.">
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <!--Social Media-->
+ <link href="bootstrap-social.css" rel="stylesheet">
+ <link rel="stylesheet" href="stylesheets/stylesheet.css">
+ <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+ <!-- Optional theme -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+ <!--<link rel="stylesheet" href="font-awesome.css">-->
+ <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+ <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+ <script>
+
+     function init_map() {
+   var var_location = new google.maps.LatLng(32.423125, -81.787235);
+   var var_location2 = new google.maps.LatLng(32.426758, -81.792868);
+
+       var var_mapoptions = {
+         center: var_location,
+         zoom: 14,
+         mapTypeId: google.maps.MapTypeId.HYBRID
+       };
+
+   var var_marker = new google.maps.Marker({
+     position: var_location,
+     map: var_map,
+     title:"IT Building"});
+
+   var var_marker2 = new google.maps.Marker({
+     position: var_location2,
+     map: var_map,
+     title:"Austin's Location"});
+
+       var var_map = new google.maps.Map(document.getElementById("map-container"),
+           var_mapoptions);
+
+   var_marker.setMap(var_map);
+   var_marker2.setMap(var_map);
+
+     }
+
+     google.maps.event.addDomListener(window, 'load', init_map);
+</script>
  </head>
   <body>
-    <input onkeypress="if(this.value) {if (window.event.keyCode == 13) { sendMessage(this.value); this.value = null; }}"/>
-  			<div id="output"></div>
-    <div id = "notificationCenter">
-    </div>
-    <br>
-    <form action="RequestRide.php" method="post">
-                <input type = "text" name="location" placeholder="Where you at?"></input><br>
-                <input type ="submit" name="submit" value="Send"/>
-    </form>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+    	<meta charset="utf-8">
+    	<title>Ride Share Home</title>
+    	<meta name="description" content="Share a ride with fellow students.  Get low prices on trips back home to see your family.">
+    	<!-- Latest compiled and minified CSS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    	<!--Social Media-->
+    	<link href="bootstrap-social.css" rel="stylesheet">
+    	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    	<!-- Optional theme -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    	<!--<link rel="stylesheet" href="font-awesome.css">-->
+    	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+    	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    	<script>
+
+          function init_map() {
+    		var var_location = new google.maps.LatLng(32.423125, -81.787235);
+    		var var_location2 = new google.maps.LatLng(32.426758, -81.792868);
+
+            var var_mapoptions = {
+              center: var_location,
+              zoom: 14,
+              mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+
+    		var var_marker = new google.maps.Marker({
+    			position: var_location,
+    			map: var_map,
+    			title:"IT Building"});
+
+    		var var_marker2 = new google.maps.Marker({
+    			position: var_location2,
+    			map: var_map,
+    			title:"111 South"});
+
+            var var_map = new google.maps.Map(document.getElementById("map-container"),
+                var_mapoptions);
+
+    		var_marker.setMap(var_map);
+    		var_marker2.setMap(var_map);
+
+          }
+
+          google.maps.event.addDomListener(window, 'load', init_map);
+
+        </script>
+
+    	<style>
+    		#map-container{
+    			height: 800px;
+    		}
+    	</style>
+    </head>
+    <body>
+    	<header>
+    		<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    			<div class="container">
+    				<div class="navbar-header">
+    					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+    						<span class="icon-bar"></span>
+    						<span class="icon-bar"></span>
+    						<span class="icon-bar"></span>
+    					</button>
+    					<a href="" class="navbar-brand">RideShare</a> <!--Change to logo-->
+    				</div>
+    				<div class="collapse navbar-collapse" id="example">
+    					<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-1">Riders</button>
+
+    				</div>
+    			</div>
+    		</div>
+    	</header>
+
+      <!-- <input onkeypress="if(this.value) {if (window.event.keyCode == 13) { sendMessage(this.value); this.value = null; }}"/>
+    			<div id="output"></div> -->
+      <div id = "notificationCenter">
+      </div>
+      <form action="RequestRide.php" method="post">
+        <!--input to type in location. will turn into map-->
+                  <input type = "text" name="location" placeholder="Where you at?"></input><br>
+                  <input type ="submit" name="submit" value="Send"/>
+      </form>
+      <br>
+    	<center><div id="map-container" class="col-md-12"></div></center>
+
+    </body>
+
+    </html>
+
   </body>
 </html>
