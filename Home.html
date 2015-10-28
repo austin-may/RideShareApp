@@ -41,7 +41,7 @@
 					</button>
 					<a href="" class="navbar-brand">RideShare</a> <!--Change to logo-->
 				</div>
-				<div class="collapse navbar-collapse" id="example">						
+				<div class="collapse navbar-collapse" id="example">
 					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-2">Log In</button>
 					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-1">Sign Up</button>
 
@@ -83,12 +83,14 @@
       </div>
       <div class="modal-body">
         <form action="SignUp.php" method="post">
-              <input type = "text" name="username" placeholder="Username"></input><br>
-              <input type = "password" name="password" placeholder="Password"></input><br>
-			  <input type = "password" name="confirmpassword" placeholder="Confirm Password"></input><br>
+					<input type = "text" name="firstname" placeholder="First name"></input><br>
+					<input type = "text" name="lastname" placeholder="Last name"></input><br>
+										<input type = "text" name="username" placeholder="Username"></input><br>
+										<input type = "password" name="password" placeholder="Password"></input><br>
+										<input type = "password" name="confirmpassword" placeholder="Confirm Password"></input><br>
 	   </div>
       <div class="modal-footer">
-      	<input type="submit" class="btn btn-success" name="submit" value="Log In"></input>
+      	<input type="submit" class="btn btn-success" name="submit" value="Sign Up"></input>
         <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel"></input>
       </div>
       </form>
@@ -107,9 +109,9 @@
         <h4 class="modal-title">Log In</h4>
       </div>
       <div class="modal-body">
-        <form action="LogIn.php" method="post">
-              <input type = "text" name="username" placeholder="Username"></input><br>
-              <input type = "password" name="password" placeholder="Password"></input><br>
+        <form action="Login.php" method="post">
+					<input type = "text" name="username" placeholder="Username"></input><br>
+					<input type = "password" name="password" placeholder="Password"></input><br>
 	   </div>
       <div class="modal-footer">
       	<input type="submit" class="btn btn-success" name="submit" value="Log In"></input>
