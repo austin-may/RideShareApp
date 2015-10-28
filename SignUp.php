@@ -17,12 +17,30 @@
 	        $password = $_POST['password'];
         }
 
+        if(empty($_POST['firstname'])){
+
+  	        // Adds name to array
+  	        $data_missing[] = 'First name';
+
+  	    } else{
+  	        $first_name = $_POST['firstname'];
+          }
+
+          if(empty($_POST['lastname'])){
+
+    	        // Adds name to array
+    	        $data_missing[] = 'Last name';
+
+    	    } else{
+    	        $last_name = $_POST['lastname'];
+            }
+
       if(empty($data_missing)){
         require_once('connectMySQL.php');
-        $insertQuery = "INSERT INTO Users (Username, Password) VALUES (?, ?)";
+        $insertQuery = "INSERT INTO Users (Username, Password, FirstName, LastName) VALUES (?, ?, ?, ?)";
         $statement = mysqli_prepare($dbc, $insertQuery);
 
-        mysqli_stmt_bind_param($statement, "ss", $username, $password);
+        mysqli_stmt_bind_param($statement, "ssss", $username, $password, $first_name, $last_name);
         mysqli_stmt_execute($statement);
         $affected_rows = mysqli_stmt_affected_rows($statement);
         if($affected_rows == 1){
