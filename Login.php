@@ -51,7 +51,7 @@
 
  <script>
 
-     function init_map() {
+/*     function init_map() {
    var var_location = new google.maps.LatLng(32.423125, -81.787235);
    var var_location2 = new google.maps.LatLng(32.426758, -81.792868);
 
@@ -80,6 +80,65 @@
      }
 
      google.maps.event.addDomListener(window, 'load', init_map);
+*/
+	function codeAddress(map, geocoder, address, title, bounds) {
+		geocoder.geocode( { 'address': address}, function(results, status) {
+		  if (status == google.maps.GeocoderStatus.OK) {
+			var infoWindow = new google.maps.InfoWindow({
+			  content: title
+			});
+			var marker = new google.maps.Marker({
+			  map: map,
+			  position: results[0].geometry.location,
+			  title: title
+			});
+			google.maps.event.addListener(marker, 'mouseover', function() {
+			  infoWindow.open(map, marker);
+			});
+			google.maps.event.addListener(marker, 'mouseout', function() {
+			  infoWindow.close(map, marker);
+			});
+			google.maps.event.addListener(marker, 'click', function() {
+			  alert(results[0].formatted_address);
+			});
+			marker.setMap(map)
+			bounds.extend(marker.position);
+			map.fitBounds(bounds);
+		  } else {
+			alert("Geocode was not successful for the following reason: " + status);
+		  }
+		});
+	  }
+	  
+	  function init_map() {
+		
+
+		var var_mapoptions = {
+		  center: new google.maps.LatLng(32.419750, -81.783195),
+		  zoom: 14,
+		  mapTypeId: google.maps.MapTypeId.HYBRID
+		};
+
+		var var_map = new google.maps.Map(document.getElementById("map-container"),
+			var_mapoptions);
+		var var_bounds = new google.maps.LatLngBounds();
+		var var_geocoder = new google.maps.Geocoder();
+		
+		codeAddress(var_map, var_geocoder, "Centennial Place, Statesboro", "Centennial Place", var_bounds);
+		codeAddress(var_map, var_geocoder, "Eagle Village, Statesboro", "Eagle Village", var_bounds);
+		codeAddress(var_map, var_geocoder, "Freedom's Landing, Statesboro", "Freedom's Landing", var_bounds);
+		codeAddress(var_map, var_geocoder, "Kennedy Hall, Statesboro", "Kennedy Hall", var_bounds);
+		codeAddress(var_map, var_geocoder, "Southern Courtyard, Statesboro", "Southern Courtyard", var_bounds);
+		codeAddress(var_map, var_geocoder, "Southern Pines, Statesboro", "Southern Pines", var_bounds);
+		codeAddress(var_map, var_geocoder, "University Villas, Statesboro", "University Villas", var_bounds);
+		codeAddress(var_map, var_geocoder, "Watson Hall, Statesboro", "Watson Hall", var_bounds);
+		codeAddress(var_map, var_geocoder, "Forum at Statesboro Student Apartments, 831 S Main St, Statesboro, GA 30458", "The Forum", var_bounds);
+		codeAddress(var_map, var_geocoder, "Cambridge at Southern, 130 Lanier Dr, Statesboro, GA 30458", "Cambridge at Southern", var_bounds);
+		codeAddress(var_map, var_geocoder, "111 South Apartments, 111 Rucker Ln, Statesboro, GA 30458", "111 South Apartments", var_bounds);
+
+	  }
+
+	  google.maps.event.addDomListener(window, 'load', init_map);
 </script>
  </head>
   <body>
@@ -107,7 +166,7 @@
 
     	<script>
 
-          function init_map() {
+/*          function init_map() {
     		var var_location = new google.maps.LatLng(32.423125, -81.787235);
     		var var_location2 = new google.maps.LatLng(32.426758, -81.792868);
 
@@ -136,7 +195,73 @@
           }
 
           google.maps.event.addDomListener(window, 'load', init_map);
+*/
 
+
+
+
+/*COMMENTED OUT FOR NOW; ENABLING RESULTS IN OVER_QUERY_LIMIT ERRORS,
+OBTAINING API KEY SHOULD RESOLVE THAT*/
+/*
+			function codeAddress(map, geocoder, address, title, bounds) {
+				geocoder.geocode( { 'address': address}, function(results, status) {
+				  if (status == google.maps.GeocoderStatus.OK) {
+					var infoWindow = new google.maps.InfoWindow({
+					  content: title
+					});
+					var marker = new google.maps.Marker({
+					  map: map,
+					  position: results[0].geometry.location,
+					  title: title
+					});
+					google.maps.event.addListener(marker, 'mouseover', function() {
+					  infoWindow.open(map, marker);
+					});
+					google.maps.event.addListener(marker, 'mouseout', function() {
+					  infoWindow.close(map, marker);
+					});
+					google.maps.event.addListener(marker, 'click', function() {
+					  alert(results[0].formatted_address);
+					});
+					marker.setMap(map)
+					bounds.extend(marker.position);
+					map.fitBounds(bounds);
+				  } else {
+					alert("Geocode was not successful for the following reason: " + status);
+				  }
+				});
+			  }
+			  
+			  function init_map() {
+				
+
+				var var_mapoptions = {
+				  center: new google.maps.LatLng(32.419750, -81.783195),
+				  zoom: 14,
+				  mapTypeId: google.maps.MapTypeId.HYBRID
+				};
+
+				var var_map = new google.maps.Map(document.getElementById("map-container"),
+					var_mapoptions);
+				var var_bounds = new google.maps.LatLngBounds();
+				var var_geocoder = new google.maps.Geocoder();
+				
+				codeAddress(var_map, var_geocoder, "Centennial Place, Statesboro", "Centennial Place", var_bounds);
+				codeAddress(var_map, var_geocoder, "Eagle Village, Statesboro", "Eagle Village", var_bounds);
+				codeAddress(var_map, var_geocoder, "Freedom's Landing, Statesboro", "Freedom's Landing", var_bounds);
+				codeAddress(var_map, var_geocoder, "Kennedy Hall, Statesboro", "Kennedy Hall", var_bounds);
+				codeAddress(var_map, var_geocoder, "Southern Courtyard, Statesboro", "Southern Courtyard", var_bounds);
+				codeAddress(var_map, var_geocoder, "Southern Pines, Statesboro", "Southern Pines", var_bounds);
+				codeAddress(var_map, var_geocoder, "University Villas, Statesboro", "University Villas", var_bounds);
+				codeAddress(var_map, var_geocoder, "Watson Hall, Statesboro", "Watson Hall", var_bounds);
+				codeAddress(var_map, var_geocoder, "Forum at Statesboro Student Apartments, 831 S Main St, Statesboro, GA 30458", "The Forum", var_bounds);
+				codeAddress(var_map, var_geocoder, "Cambridge at Southern, 130 Lanier Dr, Statesboro, GA 30458", "Cambridge at Southern", var_bounds);
+				codeAddress(var_map, var_geocoder, "111 South Apartments, 111 Rucker Ln, Statesboro, GA 30458", "111 South Apartments", var_bounds);
+
+			  }
+
+			  google.maps.event.addDomListener(window, 'load', init_map);
+*/
         </script>
 
     	<style>
