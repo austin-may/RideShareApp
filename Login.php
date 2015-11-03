@@ -268,10 +268,10 @@ OBTAINING API KEY SHOULD RESOLVE THAT*/
     						<span class="icon-bar"></span>
     						<span class="icon-bar"></span>
     					</button>
-    					<a href="" class="navbar-brand">RideShare</a> <!--Change to logo-->
+              <img src = "WaldoLogo.png" id = "logo">
+    					<a href="" class="navbar-brand">Waldo</a> <!--Change to logo-->
     				</div>
     				<div class="collapse navbar-collapse" id="example">
-    					<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-1">Riders</button>
 
     				</div>
     			</div>

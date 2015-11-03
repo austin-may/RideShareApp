@@ -9,10 +9,12 @@
 #respond{
   width: 200px;
   height: 100px;
-  margin-top: 5%;
   border: 1px solid black;
   line-height: 100px;
   text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-size: 25px;
 }
 
 #welcome{
@@ -22,9 +24,9 @@
 }
 
 .jumbotron{
-  background-image: url("hitchhiker_1280 (2).jpg");
+  background-image: url("../openroad.jpg");
   background-size: cover;
-  height: 500px;
+  height: 920px;
   font-family: 'Merriweather', serif;
   color: #E6E6E6;
   text-shadow: 2px 2px #000000;
@@ -32,4 +34,9 @@
 
 #map-container{
   height: 500px;
+}
+
+#logo{
+  height: 50px;
+  width: 50px;
 }
