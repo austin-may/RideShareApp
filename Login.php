@@ -50,37 +50,6 @@
  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
  <script>
-
-/*     function init_map() {
-   var var_location = new google.maps.LatLng(32.423125, -81.787235);
-   var var_location2 = new google.maps.LatLng(32.426758, -81.792868);
-
-       var var_mapoptions = {
-         center: var_location,
-         zoom: 14,
-         mapTypeId: google.maps.MapTypeId.HYBRID
-       };
-
-   var var_marker = new google.maps.Marker({
-     position: var_location,
-     map: var_map,
-     title:"IT Building"});
-
-   var var_marker2 = new google.maps.Marker({
-     position: var_location2,
-     map: var_map,
-     title:"Austin's Location"});
-
-       var var_map = new google.maps.Map(document.getElementById("map-container"),
-           var_mapoptions);
-
-   var_marker.setMap(var_map);
-   var_marker2.setMap(var_map);
-
-     }
-
-     google.maps.event.addDomListener(window, 'load', init_map);
-*/
 	function codeAddress(map, geocoder, address, title, bounds) {
 		geocoder.geocode( { 'address': address}, function(results, status) {
 		  if (status == google.maps.GeocoderStatus.OK) {
@@ -99,7 +68,11 @@
 			  infoWindow.close(map, marker);
 			});
 			google.maps.event.addListener(marker, 'click', function() {
-			  alert(results[0].formatted_address);
+			  var setPickupPoint = confirm("Get picked up at " + title + "?");
+        if(setPickupPoint == true){
+          $launchPickupPoint(title);
+        }
+        else{}
 			});
 			marker.setMap(map)
 			bounds.extend(marker.position);
@@ -109,9 +82,24 @@
 		  }
 		});
 	  }
-	  
+
+$(document).ready(function(){
+  $launchPickupPoint = function(address) {
+        $.ajax({
+    type: "POST",
+    url: "RequestRide.php",
+    data:{ location: address},
+    success: function(data){
+        alert(data);
+    }
+})
+};
+
+});
+
+
 	  function init_map() {
-		
+
 
 		var var_mapoptions = {
 		  center: new google.maps.LatLng(32.419750, -81.783195),
@@ -123,7 +111,7 @@
 			var_mapoptions);
 		var var_bounds = new google.maps.LatLngBounds();
 		var var_geocoder = new google.maps.Geocoder();
-		
+
 		codeAddress(var_map, var_geocoder, "Centennial Place, Statesboro", "Centennial Place", var_bounds);
 		codeAddress(var_map, var_geocoder, "Eagle Village, Statesboro", "Eagle Village", var_bounds);
 		codeAddress(var_map, var_geocoder, "Freedom's Landing, Statesboro", "Freedom's Landing", var_bounds);
@@ -231,9 +219,9 @@ OBTAINING API KEY SHOULD RESOLVE THAT*/
 				  }
 				});
 			  }
-			  
+
 			  function init_map() {
-				
+
 
 				var var_mapoptions = {
 				  center: new google.maps.LatLng(32.419750, -81.783195),
@@ -245,7 +233,7 @@ OBTAINING API KEY SHOULD RESOLVE THAT*/
 					var_mapoptions);
 				var var_bounds = new google.maps.LatLngBounds();
 				var var_geocoder = new google.maps.Geocoder();
-				
+
 				codeAddress(var_map, var_geocoder, "Centennial Place, Statesboro", "Centennial Place", var_bounds);
 				codeAddress(var_map, var_geocoder, "Eagle Village, Statesboro", "Eagle Village", var_bounds);
 				codeAddress(var_map, var_geocoder, "Freedom's Landing, Statesboro", "Freedom's Landing", var_bounds);
@@ -294,11 +282,6 @@ OBTAINING API KEY SHOULD RESOLVE THAT*/
     			<div id="output"></div> -->
       <div id = "notificationCenter">
       </div>
-      <form action="RequestRide.php" method="post">
-        <!--input to type in location. will turn into map-->
-                  <input type = "text" name="location" placeholder="Where you at?"></input><br>
-                  <input type ="submit" name="submit" value="Send"/>
-      </form>
       <br>
     	<center><div id="map-container" class="col-md-12"></div></center>
 
