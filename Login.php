@@ -282,6 +282,9 @@ OBTAINING API KEY SHOULD RESOLVE THAT*/
     			<div id="output"></div> -->
       <div id = "notificationCenter">
       </div>
+      <form action="http://localhost:5000">
+    <input type="submit" value="Chat!">
+      </form>
       <br>
     	<center><div id="map-container" class="col-md-12"></div></center>
 

@@ -12,7 +12,10 @@ if($response){
   // mysqli_fetch_array will return a row of data from the query
   // until no further data is available
   while($row = mysqli_fetch_array($response)){
-    echo '<img src="tooltip_pulse.gif" height="42" width="42"/>'. $row['ComplexName'] . " " . $row['FirstName'] . " ". $row['LastName'] . "<button class = 'pickup'>SCOOP</button>";
+    echo '<img src="tooltip_pulse.gif" height="42" width="42"/>'. $row['ComplexName'] . " " . $row['FirstName'] . " ". $row['LastName'] .
+    "<form action='http://localhost:5000'>
+    <input type='submit' value='Chat!' id='chatwindow'>
+    </form>";
     echo "<br>";
   }
 }

@@ -5,6 +5,10 @@ $(document).ready(function(){
   });
 });
 
+// $("#chatwindow").click(function(){
+//         $("#chatbox").load("../chat-example/node_modules/express/index.js");
+//     });
+
 
 
 });
