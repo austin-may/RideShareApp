@@ -104,7 +104,7 @@
 		var var_map = new google.maps.Map(document.getElementById("map-container"),
 			var_mapoptions);
 		var var_bounds = new google.maps.LatLngBounds();
-		
+
 		addMarker(var_map, "Centennial Place", "30458, 98 Georgia Ave, Statesboro, GA 30460, United States", "32.42321", "-81.78048", true, var_bounds);
 		addMarker(var_map, "Eagle Village", "Eagle Village, Statesboro, GA 30458, United States", "32.42037", "-81.7781", true, var_bounds);
 		addMarker(var_map, "Freedom's Landing", "211 Lanier Dr, Statesboro, GA 30458, United States", "32.40948", "-81.78382", true, var_bounds);
@@ -115,8 +115,8 @@
 		addMarker(var_map, "University Villas", "University Villas, Statesboro, GA 30458, United States", "32.41892", "-81.78173", true, var_bounds);
 		addMarker(var_map, "Watson Hall", "Watson Hall Commons, Statesboro, GA 30458, United States", "32.42181", "-81.78233", true, var_bounds);
 		addMarker(var_map, "IT Building", "Information Technology Building, Statesboro, GA 30458, United States", "32.42327", "-81.78647", true, var_bounds);
-		
-		
+
+
 		addMarker(var_map, "111 South Apartments", "111 Rucker Ln, Statesboro, GA 30458, United States", "32.4259818", "-81.7935383", false, var_bounds);
 		addMarker(var_map, "Aspen Heights Statesboro", "17358 GA-67 #100, Statesboro, GA 30458, United States", "32.401364", "-81.7579530", false, var_bounds);
 		addMarker(var_map, "Cambridge at Southern", "130 Lanier Dr, Statesboro, GA 30458, United States", "32.4141068", "-81.7789642", false, var_bounds);
