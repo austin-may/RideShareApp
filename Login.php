@@ -20,7 +20,10 @@
   }
 }
   if($valid == true){echo "<div id = 'welcome'>Welcome ". $firstname ."!".'</div>';}
-  else{ echo "Incorrect";}
+  else
+  {
+    echo "<script>alert('Incorrect username/password'); window.location = 'home.html';</script>";
+  }
 }
 
 
