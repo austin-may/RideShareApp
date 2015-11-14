@@ -3,10 +3,19 @@
   require_once('connectMySQL.php');
   $query = "SELECT Username, Password, FirstName FROM Users";
 
+
   $response = @mysqli_query($dbc, $query);
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  if(isset($_POST['username'])){
+    $username = $_POST['username'];
+  }
+  if(isset($_POST['password'])){
+    $password = $_POST['password'];
+  }
   $valid = false;
+  if(isset($_POST['rider'])){
+    $_SESSION['pickupuser'] = $_POST['rider'];
+  }
+
 
   if($response){
 	// mysqli_fetch_array will return a row of data from the query
@@ -19,12 +28,26 @@
     break;
   }
 }
-  if($valid == true){echo "<div id = 'welcome'>Welcome ". $firstname ."!".'</div>';}
+}
+  if($valid == true)
+  {
+    if(isset($_SESSION['pickupuser']) && $_SESSION['Username'] == $_SESSION['pickupuser'])
+    {
+      echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>you have a driver!</div>";
+    }
+
+    else
+    {
+      echo "<div id = 'welcome'>Welcome ". $firstname . "!".'</div>';
+    }
+
+  }
+
   else
   {
     echo "<script>alert('Incorrect username/password'); window.location = 'home.html';</script>";
   }
-}
+
 
 
 

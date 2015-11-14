@@ -1,22 +1,36 @@
 <?php
-require_once('connectMySQL.php');
-$query =
-"SELECT Users.FirstName, Users.LastName, Locations.ComplexName
- FROM Locations
- JOIN Users
- ON Locations.Username=Users.Username";
+session_start();
+//calling the api for the web service
+ $requests_list = file_get_contents('http://localhost:3000/RideShareApp/api.php?action=get_rider_list');
+ $requests_list = json_decode($requests_list, true);
+ ?>
 
-$response = @mysqli_query($dbc, $query);
+ <?php
 
-if($response){
-  // mysqli_fetch_array will return a row of data from the query
-  // until no further data is available
-  while($row = mysqli_fetch_array($response)){
-    echo '<img src="tooltip_pulse.gif" height="42" width="42"/>'. $row['ComplexName'] . " " . $row['FirstName'] . " ". $row['LastName'] .
-    "<form action='http://localhost:5000'>
+ $i = 0;
+ $theRider = "";
+ $userID = "";
+ foreach($requests_list as $request){
+   echo '<img src="tooltip_pulse.gif" height="42" width="42"/>';
+   foreach($request as $key => $val)
+    {
+       $numItems = count($request);
+       if(++$i == $numItems){
+         $theRider = $val;
+       }
+        echo $val . " ";
+    }
+    $i = 0;
+
+
+    echo "<button class='pickupbtn' id = $theRider>Pick up!</button>";
+    //chat window after each person
+    echo "<form action='http://localhost:5000'>
     <input type='submit' value='Chat!' id='chatwindow'>
     </form>";
     echo "<br>";
-  }
-}
+ }
+
+ echo $userID;
+
 ?>

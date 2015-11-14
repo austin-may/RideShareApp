@@ -3,12 +3,23 @@ $(document).ready(function(){
     $.post("RespondRide.php", {}, function(data) {
     $('#NeedScooped').html(data);
   });
+
+
 });
 
-// $("#chatwindow").click(function(){
-//         $("#chatbox").load("../chat-example/node_modules/express/index.js");
-//     });
 
-
+$(function(){
+    $(document).on("click",".pickupbtn",function(){
+      var name = this.id;
+      $.ajax({
+          type: 'POST',
+          url: 'login.php',
+          data: { 'rider': name},
+          success:function(){
+            alert("You have notified " + name + " that you can pick them up!");
+          }
+      });
+    });
+});
 
 });
