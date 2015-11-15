@@ -12,5 +12,6 @@ CREATE TABLE Users (
   Username varchar(255) NOT NULL,
   Password varchar(255) NOT NULL,
   FirstName varchar(255) NOT NULL,
-  LastName varchar(255) NOT NULL
+  LastName varchar(255) NOT NULL,
+  PickedUp bool NULL
 );

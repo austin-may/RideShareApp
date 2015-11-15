@@ -17,6 +17,7 @@ session_start();
        $numItems = count($request);
        if(++$i == $numItems){
          $theRider = $val;
+         break;
        }
         echo $val . " ";
     }

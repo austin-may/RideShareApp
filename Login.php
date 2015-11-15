@@ -14,6 +14,7 @@
   $valid = false;
   if(isset($_POST['rider'])){
     $_SESSION['pickupuser'] = $_POST['rider'];
+    $_SESSION['count'] = 1;
   }
 
 
@@ -33,8 +34,30 @@
   {
     if(isset($_SESSION['pickupuser']) && $_SESSION['Username'] == $_SESSION['pickupuser'])
     {
-      echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>you have a driver!</div>";
+      if($_SESSION['count'] == 1)
+      {
+        $_SESSION['count']++;
+        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>you have a driver!</div>";
+        $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
+        if ($dbc->query($deleteQuery) === TRUE)
+         {
+            $updateQuery = "UPDATE Users SET PickedUp = true WHERE Username ='" . $_SESSION['Username']. "'";
+            if ($dbc->query($updateQuery) === TRUE) {}
+              else {
+              echo "Error updating record: " . $dbc->error;
+          }
+         }
+        else
+        {
+          echo "Error deleting record: " . $dbc->error;
+        }
+
+      $dbc->close();
     }
+    else{
+      echo "<div id = 'welcome'>Welcome ". $firstname . "!".'</div>';
+    }
+  }
 
     else
     {

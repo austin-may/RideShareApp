@@ -10,10 +10,11 @@
   width: 200px;
   height: 100px;
   border: 1px solid black;
-  line-height: 100px;
+  line-height: 50px;
   text-align: center;
   margin: 0 auto;
   display: block;
+  margin-top: 20%;
   font-size: 25px;
 }
 
@@ -24,12 +25,16 @@
 }
 
 .jumbotron{
-  background-image: url("GSU_Entrance_sm.jpg");
+  background-image: url("../grayscale.jpg");
   background-size: cover;
   height: 1000px;
   font-family: 'Merriweather', serif;
   color: #E6E6E6;
   text-shadow: 2px 2px #000000;
+}
+
+h1{
+  margin-top: 10%;
 }
 
 #map-container{
