@@ -41,7 +41,7 @@
         $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
-            $updateQuery = "UPDATE Users SET PickedUp = true WHERE Username ='" . $_SESSION['Username']. "'";
+            $updateQuery = "UPDATE Users SET PickedUp = false WHERE Username ='" . $_SESSION['Username']. "'";
             if ($dbc->query($updateQuery) === TRUE) {}
               else {
               echo "Error updating record: " . $dbc->error;
