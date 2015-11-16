@@ -244,6 +244,10 @@
     					</button>
               <img src = "WaldoLogo.png" id = "logo">
     					<a href="" class="navbar-brand">Waldo</a> <!--Change to logo-->
+						<button type = "button" a href="http://localhost/RideShareApp/ViewProfile.php" class="btn btn-primary pull-right" data-toggle="modal" >View Profile</a>
+						<button type = "button" a href="http://localhost/RideShareApp/home.html" class="btn btn-primary pull-right" data-toggle="modal" class="navbar-brand">Home</a>
+						
+						
     				</div>
     				<div class="collapse navbar-collapse" id="example">
 
