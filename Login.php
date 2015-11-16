@@ -37,7 +37,7 @@
       if($_SESSION['count'] == 1)
       {
         $_SESSION['count']++;
-        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>you have a driver!</div>";
+        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>You have a driver!</div>";
         $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
