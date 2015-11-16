@@ -55,7 +55,7 @@
       $dbc->close();
     }
     else{
-      echo "<div id = 'welcome'>Welcome ". $firstname . "!".'</div>';
+      echo "<div class='container-fluid'><div class='col-md-12' id = 'welcome'>Welcome ". $firstname . "!".'</div></div>';
     }
   }
 
@@ -243,7 +243,7 @@
     						<span class="icon-bar"></span>
     					</button>
               <img src = "WaldoLogo.png" id = "logo">
-    					<a href="" class="navbar-brand">Waldo</a> <!--Change to logo-->
+    					<p>Waldo</p> <!--Change to logo-->
     				</div>
     				<div class="collapse navbar-collapse" id="example">
 
@@ -256,9 +256,11 @@
     			<div id="output"></div> -->
       <div id = "notificationCenter">
       </div>
+      <div class="container-fluid">
       <form action="http://localhost:5000">
-    <input type="submit" value="Chat!">
+        <center><button id = "btn-center" class = 'btn btn-primary' type="submit" value="Chat!">Chat!</Button></center>
       </form>
+    </div>
       <br>
     	<center><div id="map-container" class="col-md-12"></div></center>
 
