@@ -33,11 +33,11 @@
 						<span class="icon-bar"></span>
 					</button>
 					<img src = "WaldoLogo.png" id = "logo">
-					<h2 class="navbar-text">Waldo</h2> <!--Change to logo-->
+					<h2 class="navbar-text" id="appname">Waldo</h2> <!--Change to logo-->
 				</div>
 				<div class="collapse navbar-collapse" id="example">
-					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-2">Log In</button>
-					<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-1">Sign Up</button>
+					<button type="button"  id = "btn-primary" class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-2">Log In</button>
+					<button type="button"  id = "btn-primary" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-1">Sign Up</button>
 
 				</div>
 			</div>
@@ -70,11 +70,11 @@
       </div>
       <div class="modal-body">
         <form action="SignUp.php" method="post">
-					<input type = "text" name="firstname" placeholder="First name"></input><br>
-					<input type = "text" name="lastname" placeholder="Last name"></input><br>
-										<input type = "text" name="username" placeholder="Username"></input><br>
-										<input type = "password" name="password" placeholder="Password"></input><br>
-										<input type = "password" name="confirmpassword" placeholder="Confirm Password"></input><br>
+					<input type = "text" name="firstname" id="textbox" placeholder="First name"></input><br>
+					<input type = "text" name="lastname" id="textbox" placeholder="Last name"></input><br>
+										<input type = "text" name="username" id="textbox" placeholder="Username"></input><br>
+										<input type = "password" name="password" id="textbox" placeholder="Password"></input><br>
+										<input type = "password" name="confirmpassword" id="textbox" placeholder="Confirm Password"></input><br>
 	   </div>
       <div class="modal-footer">
       	<input type="submit" class="btn btn-success" name="submit" value="Sign Up"></input>
@@ -97,8 +97,8 @@
       </div>
       <div class="modal-body">
         <form action="Login.php" method="post">
-					<input type = "text" name="username" placeholder="Username"></input><br>
-					<input type = "password" name="password" placeholder="Password"></input><br>
+					<input type = "text" name="username" id="textbox" placeholder="Username"></input><br>
+					<input type = "password" name="password"  id="textbox" placeholder="Password"></input><br>
 	   </div>
       <div class="modal-footer">
       	<input type="submit" class="btn btn-success" name="submit" value="Log In"></input>
