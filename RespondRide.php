@@ -1,7 +1,7 @@
 <?php
 session_start();
 //calling the api for the web service
- $requests_list = file_get_contents('http://localhost:3000/RideShareApp/api.php?action=get_rider_list');
+ $requests_list = file_get_contents('http://localhost:8080/RideShareApp/api.php?action=get_rider_list');
  $requests_list = json_decode($requests_list, true);
  ?>
 
