@@ -37,7 +37,7 @@
       if($_SESSION['count'] == 1)
       {
         $_SESSION['count']++;
-        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>you have a driver!</div>";
+        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div id = 'driverfound'>A Driver has taken on your request!</div>";
         $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
@@ -55,7 +55,7 @@
       $dbc->close();
     }
     else{
-      echo "<div id = 'welcome'>Welcome ". $firstname . "!".'</div>';
+      echo "<div class='container-fluid'><div class='col-md-12' id = 'welcome'>Welcome ". $firstname . "!".'</div></div>';
     }
   }
 
@@ -243,10 +243,12 @@
     						<span class="icon-bar"></span>
     					</button>
               <img src = "WaldoLogo.png" id = "logo">
-    					<a href="" class="navbar-brand">Waldo</a> <!--Change to logo-->
-						<button type = "button" a href="http://localhost/RideShareApp/ViewProfile.php" class="btn btn-primary pull-right" data-toggle="modal" >View Profile</a>
-						<button type = "button" a href="http://localhost/RideShareApp/home.html" class="btn btn-primary pull-right" data-toggle="modal" class="navbar-brand">Home</a>
+    					<h2 class="navbar-text">Waldo</h2>  <!--Change to logo-->
+						<a href="http://localhost/RideShareApp/ViewProfile.php" button type = "button" id = "btn-primary"class="btn btn-warning pull-right" data-toggle="modal" >View Profile</a>
+						<a href="http://localhost/RideShareApp/home.html" button type = "button" id = "btn-primary" class="btn btn-primary pull-right" data-toggle="modal" class="navbar-brand">Home</a>
 						
+						
+    					
 						
     				</div>
     				<div class="collapse navbar-collapse" id="example">
@@ -260,9 +262,11 @@
     			<div id="output"></div> -->
       <div id = "notificationCenter">
       </div>
+      <div class="container-fluid">
       <form action="http://localhost:5000">
-    <input type="submit" value="Chat!">
+        <center><button id = "btn-center" class = 'btn btn-success' type="submit" value="Chat!">Chat!</Button></center>
       </form>
+    </div>
       <br>
     	<center><div id="map-container" class="col-md-12"></div></center>
 
