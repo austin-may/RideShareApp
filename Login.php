@@ -37,7 +37,11 @@
       if($_SESSION['count'] == 1)
       {
         $_SESSION['count']++;
+<<<<<<< HEAD
         echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>You have a driver!</div>";
+=======
+        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div id = 'driverfound'>A Driver has taken on your request!</div>";
+>>>>>>> 7a02e8aa762f40631233a407d72e93905a4baa15
         $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
@@ -243,7 +247,13 @@
     						<span class="icon-bar"></span>
     					</button>
               <img src = "WaldoLogo.png" id = "logo">
-    					<p>Waldo</p> <!--Change to logo-->
+    					<h2 class="navbar-text">Waldo</h2>  <!--Change to logo-->
+						<a href="http://localhost/RideShareApp/ViewProfile.php" button type = "button" id = "btn-primary"class="btn btn-warning pull-right" data-toggle="modal" >View Profile</a>
+						<a href="http://localhost/RideShareApp/home.html" button type = "button" id = "btn-primary" class="btn btn-primary pull-right" data-toggle="modal" class="navbar-brand">Home</a>
+						
+						
+    					
+						
     				</div>
     				<div class="collapse navbar-collapse" id="example">
 
@@ -258,7 +268,7 @@
       </div>
       <div class="container-fluid">
       <form action="http://localhost:5000">
-        <center><button id = "btn-center" class = 'btn btn-primary' type="submit" value="Chat!">Chat!</Button></center>
+        <center><button id = "btn-center" class = 'btn btn-success' type="submit" value="Chat!">Chat!</Button></center>
       </form>
     </div>
       <br>
