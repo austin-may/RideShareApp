@@ -37,11 +37,7 @@
       if($_SESSION['count'] == 1)
       {
         $_SESSION['count']++;
-<<<<<<< HEAD
-        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>You have a driver!</div>";
-=======
-        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div id = 'driverfound'>A Driver has taken on your request!</div>";
->>>>>>> 7a02e8aa762f40631233a407d72e93905a4baa15
+        echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div id = 'driverfound'>A driver has taken on your request!</div>";
         $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
@@ -59,7 +55,7 @@
       $dbc->close();
     }
     else{
-      echo "<div class='container-fluid'><div class='col-md-12' id = 'welcome'>Welcome ". $firstname . "!".'</div></div>';
+      echo "<div class='container-fluid'><div class = 'col-md-12' id = 'welcome'>Welcome " . $firstname . "!".'</div></div>';
     }
   }
 
@@ -240,6 +236,9 @@
     	<header>
     		<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
     			<div class="container">
+            <form action="Home.html">
+            <button type = "submit" id = "btn-primary" class="btn btn-primary pull-right" data-toggle="modal" class="navbar-brand">Home</a>
+          </form>
     				<div class="navbar-header">
     					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
     						<span class="icon-bar"></span>
@@ -247,13 +246,7 @@
     						<span class="icon-bar"></span>
     					</button>
               <img src = "WaldoLogo.png" id = "logo">
-    					<h2 class="navbar-text">Waldo</h2>  <!--Change to logo-->
-						<a href="http://localhost/RideShareApp/ViewProfile.php" button type = "button" id = "btn-primary"class="btn btn-warning pull-right" data-toggle="modal" >View Profile</a>
-						<a href="http://localhost/RideShareApp/home.html" button type = "button" id = "btn-primary" class="btn btn-primary pull-right" data-toggle="modal" class="navbar-brand">Home</a>
-						
-						
-    					
-						
+              <h2 class="navbar-text">Waldo</h2>
     				</div>
     				<div class="collapse navbar-collapse" id="example">
 
@@ -266,11 +259,10 @@
     			<div id="output"></div> -->
       <div id = "notificationCenter">
       </div>
-      <div class="container-fluid">
+      <div class = "container-fluid">
       <form action="http://localhost:5000">
-        <center><button id = "btn-center" class = 'btn btn-success' type="submit" value="Chat!">Chat!</Button></center>
+        <center><button id = "btn-center" class = "btn btn-success" type="submit" value="Chat!">Chat!</button></center>
       </form>
-    </div>
       <br>
     	<center><div id="map-container" class="col-md-12"></div></center>
 
