@@ -3,7 +3,7 @@
       $data_missing = array();
       if(empty($_POST['username'])){
         $data_missing[] = 'Username';
-        echo "You forgot a username!";
+        echo "You forgot a username! ";
       } else {
         $username = $_POST['username'];
       }
@@ -44,12 +44,12 @@
         mysqli_stmt_execute($statement);
         $affected_rows = mysqli_stmt_affected_rows($statement);
         if($affected_rows == 1){
-          echo 'User added!';
+          echo "<script>alert('User added!');</script>";
           mysqli_stmt_close($statement);
           mysqli_close($dbc);
         }
         else{
-          echo 'Error has occured';
+          echo "<script>alert('Error has occured');</script>";;
           echo mysql_error();
         }
       } else{

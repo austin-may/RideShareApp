@@ -55,7 +55,7 @@
       $dbc->close();
     }
     else{
-      echo "<div class='container-fluid'><div class = 'col-md-12' id = 'welcome'>Welcome " . $firstname . "!".'</div></div>';
+      echo "<div class='container-fluid' ><div class = 'col-md-12' id = 'welcome'>Welcome " . $firstname . "!".'</div></div>';
     }
   }
 
@@ -259,7 +259,7 @@
     			<div id="output"></div> -->
       <div id = "notificationCenter">
       </div>
-      <div class = "container-fluid">
+      <div class = "container-fluid" >
       <form action="http://localhost:5000">
         <center><button id = "btn-center" class = "btn btn-success" type="submit" value="Chat!">Chat!</button></center>
       </form>
