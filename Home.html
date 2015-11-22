@@ -20,6 +20,47 @@
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="js/app.js"></script>
+	<script>
+		function checkUsername(){
+			var $uname = $("#uname");
+			var $message = $("#availableMessage");
+			var goodColor = "#66cc66";
+			var badColor = "#ff6666";
+			$.post( "CheckUnameAvailability.php", { uname: $uname.val()})
+				.done(function( data ) {
+					if(data == 0){
+					$uname.css("backgroundColor", badColor);
+					$message.css("color", badColor);
+					$message.text("Taken");
+					$('#signupSubmit').prop('disabled', true);
+					}
+					else {
+					$uname.css("backgroundColor", goodColor);
+					$message.css("color", goodColor);
+					$message.text("Available");
+					$('#signupSubmit').prop('disabled', false);
+					}
+				});
+		}
+		
+		function checkPass(){
+			var $pass2 = $("#pass2");
+			var $message = $("#confirmMessage");
+			var goodColor = "#66cc66";
+			var badColor = "#ff6666";
+			if($("#pass1").val() == $pass2.val() && $pass2.val() != ""){
+				$pass2.css("backgroundColor", goodColor);
+				$message.css("color", goodColor);
+				$message.text("Passwords Match!");
+				$('#signupSubmit').prop('disabled', false);
+			}else{
+				$pass2.css("backgroundColor", badColor);
+				$message.css("color", badColor);
+				$message.text("Passwords Do Not Match!");
+				$('#signupSubmit').prop('disabled', true);
+			}
+		}
+	</script>
 
 </head>
 <body>
@@ -70,15 +111,16 @@
         <h4 class="modal-title" >Sign Up</h4>
       </div>
       <div class="modal-body">
-        <form action="SignUp.php" method="post">
+        <form action="SignUp.php" id = "signup" method="post">
 					<input type = "text" name="firstname" id="textbox" placeholder="First name"></input><br>
 					<input type = "text" name="lastname" id="textbox" placeholder="Last name"></input><br>
-										<input type = "text" name="username" id="textbox" placeholder="Username"></input><br>
-										<input type = "password" name="password" id="textbox" placeholder="Password"></input><br>
-										<input type = "password" name="confirmpassword" id="textbox" placeholder="Confirm Password"></input><br>
+					<input type = "text" name="username" id="uname" placeholder="Username""></input><span id="availableMessage" class="availableMessage"></span><br>
+					<input type = "password" name="password" id="pass1" placeholder="Password" onkeyup="checkPass(); return false;"></input><br>
+					<input type = "password" name="confirmpassword" id="pass2" placeholder="Confirm Password" onkeyup="checkPass(); return false;"></input><br>
+					<span id="confirmMessage" class="confirmMessage"></span>
 	   </div>
       <div class="modal-footer">
-      	<input type="submit" class="btn btn-success" name="submit" value="Sign Up"></input>
+      	<input type="submit" class="btn btn-success" name="submit" id="signupSubmit" value="Sign Up"></input>
         <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel"></input>
       </div>
       </form>
