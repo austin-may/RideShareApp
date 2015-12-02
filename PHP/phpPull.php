@@ -13,7 +13,7 @@ $dbname="";
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
 	or die ('Could not connect to the database server' . mysqli_connect_error());
 
-$query = "SELECT * FROM rideshareapp.locations";
+$query = "SELECT * FROM rideshareapp.PickUps";
 
 
 if ($stmt = $con->prepare($query)) {

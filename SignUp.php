@@ -37,16 +37,24 @@
 
       if(empty($data_missing)){
         require_once('connectMySQL.php');
-        $insertQuery = "INSERT INTO Users (Username, Password, FirstName, LastName) VALUES (?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO Log_in (UserName, Password) VALUES (?, ?)";
         $statement = mysqli_prepare($dbc, $insertQuery);
 
-        mysqli_stmt_bind_param($statement, "ssss", $username, $password, $first_name, $last_name);
+        mysqli_stmt_bind_param($statement, "ss", $username, $password);
         mysqli_stmt_execute($statement);
         $affected_rows = mysqli_stmt_affected_rows($statement);
         if($affected_rows == 1){
-          echo "<script>alert('User added!');</script>";
-          mysqli_stmt_close($statement);
-          mysqli_close($dbc);
+          $insertQuery = "INSERT INTO User (UserName, FirstName, LastName) VALUES (?, ?, ?)";
+          $statement = mysqli_prepare($dbc, $insertQuery);
+
+          mysqli_stmt_bind_param($statement, "sss", $username, $first_name, $last_name);
+          mysqli_stmt_execute($statement);
+          $affected_rows = mysqli_stmt_affected_rows($statement);
+          if($affected_rows == 1){
+            echo "<script>alert('User added!');</script>";
+            mysqli_stmt_close($statement);
+            mysqli_close($dbc);
+          }
         }
         else{
           echo "<script>alert('Error has occured');</script>";;

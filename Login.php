@@ -1,7 +1,7 @@
 <?php
   session_start();
   require_once('connectMySQL.php');
-  $query = "SELECT Username, Password, FirstName FROM Users";
+  $query = "SELECT * FROM Log_in JOIN User USING (UserName)";
 
 
   $response = @mysqli_query($dbc, $query);
@@ -22,9 +22,9 @@
 	// mysqli_fetch_array will return a row of data from the query
 	// until no further data is available
 	while($row = mysqli_fetch_array($response)){
-	  if($username == $row['Username'] && $password == $row['Password']){
+	  if($username == $row['UserName'] && $password == $row['Password']){
 		$valid = true;
-		$_SESSION['Username'] = $row['Username'];
+		$_SESSION['Username'] = $row['UserName'];
 		$firstname = $row['FirstName'];
 		break;
 	  }
@@ -38,10 +38,10 @@
       {
         $_SESSION['count']++;
         echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div id = 'driverfound'>A driver has taken on your request!</div>";
-        $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
+        $deleteQuery = "DELETE FROM PickUps WHERE UserName = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
-            $updateQuery = "UPDATE Users SET PickedUp = false WHERE Username ='" . $_SESSION['Username']. "'";
+            $updateQuery = "UPDATE User SET PickedUp = false WHERE UserName ='" . $_SESSION['Username']. "'";
             if ($dbc->query($updateQuery) === TRUE) {}
               else {
               echo "Error updating record: " . $dbc->error;
@@ -99,7 +99,7 @@
  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
  <script>
-    function addMarker(map, title, address, lat, lng, onCampus, bounds) {
+    function addMarker(map, title, address, lat, lng, color, bounds) {
 		var infoWindow = new google.maps.InfoWindow({
 			content: title
 		});
@@ -121,9 +121,9 @@
 			}
 			else{}
 		});
-		if (onCampus){
-			marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-		}
+		var colorURL = "http:\/\/chart.apis.google.com\/chart?cht=d&chdp=mapsapi&chl=pin\'i\\\'[\'-2\'f\\hv\'a\\]h\\]o\\" + color + "\'fC\\000000\'tC\\000000\'eC\\Lauto\'f\\&ext=.png";
+		marker.setIcon(colorURL);
+		
 		marker.setMap(map)
 		bounds.extend(marker.position);
 		map.fitBounds(bounds);
@@ -156,18 +156,18 @@
 
 <?php
 	require_once('connectMySQL.php');
-	$query = "SELECT * FROM Pickups";
+	$query = "SELECT * FROM LocationTypes JOIN Locations USING (LocationType)";
 	$response = @mysqli_query($dbc, $query);
 	if($response){
 	// mysqli_fetch_array will return a row of data from the query
 	// until no further data is available
 		while($row = mysqli_fetch_array($response)){
-			$title = $row["Title"];
+			$title = $row["LocationName"];
 			$address = $row["Address"];
 			$lat = $row["Latitude"];
 			$lng = $row["Longitude"];
-			$oncampus = $row["OnCampus"]; 
-			echo "\t\taddMarker(var_map, \"$title\", \"$address\", \"$lat\", \"$lng\", $oncampus, var_bounds);\n";
+			$color = $row["LocationColor"]; 
+			echo "\t\taddMarker(var_map, \"$title\", \"$address\", \"$lat\", \"$lng\", \"$color\", var_bounds);\n";
 		}
 	}
 ?>

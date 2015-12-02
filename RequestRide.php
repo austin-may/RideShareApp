@@ -1,12 +1,13 @@
 <?php
   session_start();
   require_once("connectMySQL.php");
-  $insertQuery = "INSERT INTO Locations (ComplexName, Username) VALUES (?, ?)";
-  $locationSet = "SELECT PickedUp FROM Users WHERE Username ='" . $_SESSION['Username'] . "'";
+  $insertQuery = "INSERT INTO PickUps (UserName, LocationName, Date) VALUES (?, ?, ?)";
+  $locationSet = "SELECT PickedUp FROM User WHERE UserName ='" . $_SESSION['Username'] . "'";
   $statement = mysqli_prepare($dbc, $insertQuery);
   $location = $_POST['location'];
-  mysqli_stmt_bind_param($statement, "ss", $location, $_SESSION['Username']);
-  $updateQuery = "UPDATE Users SET PickedUp = true WHERE Username ='" . $_SESSION['Username']. "'";
+  $date = date("m/d/Y, h:i:sa");
+  mysqli_stmt_bind_param($statement, "sss", $_SESSION['Username'], $location, $date);
+  $updateQuery = "UPDATE User SET PickedUp = true WHERE UserName ='" . $_SESSION['Username']. "'";
 
   $locationSetResult = $dbc->query($locationSet);
 

@@ -1,7 +1,7 @@
 <?php
   session_start();
   require_once('connectMySQL.php');
-  $query = "SELECT Username, Password, FirstName FROM Users";
+  $query = "SELECT * FROM Log_in JOIN User USING (UserName);"
 
 
   $response = @mysqli_query($dbc, $query);
@@ -22,9 +22,9 @@
 	// mysqli_fetch_array will return a row of data from the query
 	// until no further data is available
 	while($row = mysqli_fetch_array($response)){
-  if($username == $row['Username'] && $password == $row['Password']){
+  if($username == $row['UserName'] && $password == $row['Password']){
     $valid = true;
-    $_SESSION['Username'] = $row['Username'];
+    $_SESSION['Username'] = $row['UserName'];
     $firstname = $row['FirstName'];
     break;
   }
@@ -38,10 +38,10 @@
       {
         $_SESSION['count']++;
         echo "<div id = 'welcome'>Welcome ". $firstname ."!"."</div> <div>you have a driver!</div>";
-        $deleteQuery = "DELETE FROM Locations WHERE Username = '" . $_SESSION['Username'] . "'";
+        $deleteQuery = "DELETE FROM PickUps WHERE Username = '" . $_SESSION['Username'] . "'";
         if ($dbc->query($deleteQuery) === TRUE)
          {
-            $updateQuery = "UPDATE Users SET PickedUp = false WHERE Username ='" . $_SESSION['Username']. "'";
+            $updateQuery = "UPDATE User SET PickedUp = false WHERE UserName ='" . $_SESSION['Username']. "'";
             if ($dbc->query($updateQuery) === TRUE) {}
               else {
               echo "Error updating record: " . $dbc->error;

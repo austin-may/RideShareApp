@@ -4,15 +4,15 @@
     require_once('connectMySQL.php');
     require_once('Requests.php');
     $query =
-    "SELECT Users.FirstName, Users.LastName, Locations.ComplexName, Users.Username
-     FROM Locations
-     JOIN Users
-     ON Locations.Username=Users.Username";
+    "SELECT User.FirstName, User.LastName, PickUps.LocationName, User.UserName
+     FROM PickUps
+     JOIN User
+     ON Pickups.UserName=User.UserName";
      $requests_array = array();
      if($result = $dbc->query($query)){
        while($obj = $result->fetch_object()){
 
-         $temp_requests = new RequestsDB($obj->FirstName, $obj->LastName, $obj->ComplexName, $obj->Username);
+         $temp_requests = new RequestsDB($obj->FirstName, $obj->LastName, $obj->LocationName, $obj->UserName);
 
          $requests_array[] = $temp_requests;
        }
